@@ -17,8 +17,9 @@ RUN apt-get update && apt-get install -y -t unstable \
     gdebi -n ss-latest.deb && \
     rm -f version.txt ss-latest.deb && \
     apt-get update && \
-    apt-get install libssl-dev && \
-    apt-get install libcurl4-openssl-dev && \
+    apt-get install libssl-dev -y && \
+    apt-get install libcurl4-openssl-dev -y && \
+    apt-get install r-cran-xml -y && \
     R -e "install.packages(c('shiny', 'rmarkdown', 'dplyr', 'sqldf', 'DT', 'tidyr', 'stringr', 'plotly', 'RColorBrewer', 'scales', 'rlist', 'flexdashboard', 'shinythemes', 'shinycssloaders', 'httr', 'rjson'), repos='https://cran.rstudio.com/')" && \
     cp -R /usr/local/lib/R/site-library/shiny/examples/* /srv/shiny-server/ && \
     rm -rf /var/lib/apt/lists/*
